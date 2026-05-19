@@ -1,54 +1,634 @@
+<!-- =========================
+DELIVERY REALTIME WEBSITE
+FILE : index.html
+========================= -->
+
 <!DOCTYPE html>
-<button class="buy">BUY NOW</button>
-<button class="cart">ADD TO CART</button>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>DeliveriPacket Realtime</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#0b1120;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 5%;
+  background:#111827;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+  font-size:35px;
+  font-weight:800;
+  color:#38bdf8;
+}
+
+.logo span{
+  color:white;
+}
+
+nav{
+  display:flex;
+  gap:25px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+}
+
+.header-right{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+.login-btn{
+  padding:12px 22px;
+  border:none;
+  border-radius:12px;
+  background:#38bdf8;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:120px 5%;
+  background:
+  linear-gradient(rgba(0,0,0,0.7),
+  rgba(0,0,0,0.8)),
+  url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1600')
+  center/cover;
+}
+
+.hero h1{
+  font-size:80px;
+  margin-bottom:20px;
+}
+
+.hero h1 span{
+  color:#38bdf8;
+}
+
+.hero p{
+  max-width:700px;
+  margin:auto;
+  color:#cbd5e1;
+  margin-bottom:30px;
+}
+
+.hero button{
+  padding:16px 35px;
+  border:none;
+  border-radius:14px;
+  background:#38bdf8;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* SERVICES */
+
+section{
+  padding:90px 5%;
+}
+
+.title{
+  text-align:center;
+  font-size:45px;
+  color:#38bdf8;
+  margin-bottom:15px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#94a3b8;
+  margin-bottom:50px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:#111827;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.05);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.content{
+  padding:25px;
+}
+
+.content h3{
+  margin-bottom:10px;
+  color:#38bdf8;
+}
+
+.content p{
+  color:#cbd5e1;
+  margin-bottom:20px;
+}
+
+.price{
+  font-size:30px;
+  color:#22c55e;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+.content button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:#38bdf8;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* TRACKING */
+
+.tracking{
+  background:#111827;
+  border-radius:25px;
+  padding:40px;
+}
+
+.tracking input{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:12px;
+  background:#1e293b;
+  color:white;
+  margin-bottom:20px;
+}
+
+.tracking button{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:12px;
+  background:#22c55e;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.result{
+  margin-top:20px;
+  font-weight:bold;
+  color:#38bdf8;
+}
+
+/* STATUS */
+
+.status-box{
+  margin-top:30px;
+  background:#1e293b;
+  padding:25px;
+  border-radius:18px;
+}
+
+.status-item{
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+/* NOTIFICATION */
+
+.notification{
+  position:fixed;
+  top:30px;
+  right:-400px;
+  background:#22c55e;
+  color:black;
+  padding:18px 25px;
+  border-radius:14px;
+  font-weight:bold;
+  z-index:5000;
+  transition:0.5s;
+}
+
+.notification.show{
+  right:30px;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:40px;
+  color:#94a3b8;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+nav{
+  display:none;
+}
+
+.hero h1{
+  font-size:50px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+<div class="logo">
+Deliveri<span>Packet</span>
 </div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Tracking</a>
+<a href="#">Services</a>
+<a href="#">Contact</a>
+</nav>
+
+<div class="header-right">
+
+<button class="login-btn">
+Login
+</button>
+
 </div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div>
+
+<h1>
+REALTIME <span>DELIVERY</span>
+</h1>
+
+<p>
+Website pengiriman paket modern dengan
+tracking realtime dan notifikasi otomatis.
+</p>
+
+<button onclick="scrollTracking()">
+Track Package
+</button>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section>
+
+<h2 class="title">
+Our Services
+</h2>
+
+<p class="subtitle">
+Layanan pengiriman cepat dan aman
+</p>
+
+<div class="grid">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1200">
+
+<div class="content">
+
+<h3>Express Delivery</h3>
+
+<p>
+Pengiriman super cepat 1 hari.
+</p>
+
+<div class="price">
+Rp25.000
+</div>
+
+<button onclick="orderService('Express Delivery')">
+Order Service
+</button>
+
+</div>
+
 </div>
 
 <div class="card">
-<img src="https://cdn.cloudflare.steamstatic.com/apps/730/icons/econ/default_generated/weapon_m4a4_cu_howl_light_large.png">
+
+<img src="https://images.unsplash.com/photo-1529074963764-98f45c47344b?q=80&w=1200">
+
 <div class="content">
-<h3>M4A4 Howl</h3>
-<div class="rarity">Contraband</div>
-<div class="price">$2,599.00</div>
-<div class="buttons">
-<button class="buy">BUY NOW</button>
-<button class="cart">ADD TO CART</button>
+
+<h3>Regular Delivery</h3>
+
+<p>
+Pengiriman hemat dan terpercaya.
+</p>
+
+<div class="price">
+Rp10.000
 </div>
+
+<button onclick="orderService('Regular Delivery')">
+Order Service
+</button>
+
 </div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=1200">
+
+<div class="content">
+
+<h3>International Delivery</h3>
+
+<p>
+Pengiriman internasional aman.
+</p>
+
+<div class="price">
+Rp150.000
+</div>
+
+<button onclick="orderService('International Delivery')">
+Order Service
+</button>
+
+</div>
+
 </div>
 
 </div>
 
 </section>
 
-<section class="features">
+<!-- TRACKING -->
 
-<div class="feature-box">
-<h3>100% SECURE</h3>
-<p>Transaksi aman dan terpercaya.</p>
+<section id="tracking">
+
+<div class="tracking">
+
+<h2 class="title">
+Realtime Tracking
+</h2>
+
+<input type="text"
+id="trackingInput"
+placeholder="Masukkan nomor resi">
+
+<button onclick="trackPackage()">
+Track Package
+</button>
+
+<div class="result"
+id="trackingResult"></div>
+
+<div class="status-box"
+id="statusBox">
+
+<div class="status-item">
+📦 Paket dibuat
 </div>
 
-<div class="feature-box">
-<h3>INSTANT DELIVERY</h3>
-<p>Skin langsung dikirim ke akun Anda.</p>
 </div>
 
-<div class="feature-box">
-<h3>24/7 SUPPORT</h3>
-<p>Tim support siap membantu Anda.</p>
-</div>
-
-<div class="feature-box">
-<h3>BEST PRICES</h3>
-<p>Harga terbaik di pasaran.</p>
 </div>
 
 </section>
+
+<!-- NOTIFICATION -->
+
+<div class="notification"
+id="notification">
+
+<span id="notificationText">
+Notifikasi
+</span>
+
+</div>
 
 <footer>
-© 2026 CS2Market Premium
+
+© 2026 DeliveriPacket Realtime
+
 </footer>
+
+<script>
+
+/* NOTIFICATION */
+
+function showNotification(message){
+
+const notification =
+document.getElementById("notification");
+
+const text =
+document.getElementById("notificationText");
+
+text.innerText = message;
+
+notification.classList.add("show");
+
+setTimeout(()=>{
+
+notification.classList.remove("show");
+
+},3000);
+
+}
+
+/* ORDER */
+
+function orderService(service){
+
+showNotification(
+service + " berhasil dipesan"
+);
+
+}
+
+/* TRACKING */
+
+function trackPackage(){
+
+const resi =
+document.getElementById("trackingInput")
+.value;
+
+const result =
+document.getElementById("trackingResult");
+
+const statusBox =
+document.getElementById("statusBox");
+
+if(resi === ""){
+
+result.innerText =
+"Masukkan nomor resi";
+
+return;
+
+}
+
+result.innerText =
+"Tracking paket : " + resi;
+
+statusBox.innerHTML = "";
+
+const statuses = [
+
+const statuses = [
+
+{
+text:"📦 Paket dibuat",
+color:"#38bdf8"
+},
+
+{
+text:"🚚 Kurir mengambil paket",
+color:"#facc15"
+},
+
+{
+text:"⚠️ Kurir mengalami kendala di perjalanan",
+color:"#ef4444"
+},
+
+{
+text:"🏢 Paket di gudang",
+color:"#a855f7"
+},
+
+{
+text:"🚛 Paket dikirim",
+color:"#22c55e"
+},
+
+{
+text:"📍 Paket hampir sampai",
+color:"#fb923c"
+},
+
+{
+text:"✅ Paket diterima",
+color:"#22c55e"
+}
+
+];
+let i = 0;
+
+const interval = setInterval(()=>{
+
+if(i < statuses.length){
+
+const div =
+document.createElement("div");
+
+div.classList.add("status-item");
+
+div.innerText =
+statuses[i];
+
+statusBox.appendChild(div);
+
+showNotification(
+statuses[i]
+);
+
+i++;
+
+}else{
+
+clearInterval(interval);
+
+}
+
+},2000);
+
+}
+
+/* SCROLL */
+
+function scrollTracking(){
+
+document.getElementById("tracking")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+</script>
 
 </body>
 </html>
