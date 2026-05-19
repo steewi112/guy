@@ -1,595 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CS2Market Premium</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-}
-
-body{
-  background:#0b1120;
-  color:white;
-  overflow-x:hidden;
-}
-
-/* HEADER */
-
-header{
-  background:#111827;
-  padding:18px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:sticky;
-  top:0;
-  z-index:1000;
-  border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-.logo{
-  font-size:28px;
-  font-weight:700;
-  color:#38bdf8;
-}
-
-nav{
-  display:flex;
-  gap:20px;
-}
-
-nav a{
-  text-decoration:none;
-  color:white;
-  transition:0.3s;
-}
-
-nav a:hover{
-  color:#38bdf8;
-}
-
-.user-balance{
-  background:#1e293b;
-  padding:10px 18px;
-  border-radius:12px;
-  font-weight:bold;
-  color:#22c55e;
-}
-
-/* HERO */
-
-.hero{
-  height:85vh;
-  background:
-  linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)),
-  url('https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1600') center/cover;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:20px;
-}
-
-.hero h1{
-  font-size:70px;
-  color:#38bdf8;
-  margin-bottom:20px;
-}
-
-.hero p{
-  color:#cbd5e1;
-  max-width:700px;
-  margin:auto;
-  margin-bottom:30px;
-}
-
-.hero button{
-  padding:15px 35px;
-  border:none;
-  border-radius:12px;
-  background:#38bdf8;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* SECTION */
-
-section{
-  padding:80px 5%;
-}
-
-.title{
-  font-size:42px;
-  text-align:center;
-  margin-bottom:15px;
-  color:#38bdf8;
-}
-
-.subtitle{
-  text-align:center;
-  color:#94a3b8;
-  margin-bottom:40px;
-}
-
-/* SEARCH */
-
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  margin-bottom:40px;
-  flex-wrap:wrap;
-}
-
-.search{
-  flex:1;
-}
-
-.search input{
-  width:100%;
-  padding:15px;
-  border:none;
-  border-radius:12px;
-  background:#111827;
-  color:white;
-}
-
-.filter select{
-  padding:15px;
-  border:none;
-  border-radius:12px;
-  background:#111827;
-  color:white;
-}
-
-.cart-panel{
-  background:#38bdf8;
-  color:black;
-  padding:15px 25px;
-  border-radius:12px;
-  font-weight:bold;
-}
-
-/* GRID */
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:25px;
-}
-
-.card{
-  background:#111827;
-  border-radius:20px;
-  overflow:hidden;
-  transition:0.3s;
-  border:1px solid rgba(255,255,255,0.06);
-}
-
-.card:hover{
-  transform:translateY(-8px);
-}
-
-.card img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-}
-
-.content{
-  padding:20px;
-}
-
-.content h3{
-  color:#38bdf8;
-  margin-bottom:10px;
-}
-
-.rarity{
-  margin-bottom:10px;
-  color:#facc15;
-}
-
-.price{
-  color:#22c55e;
-  font-size:28px;
-  font-weight:bold;
-  margin-bottom:20px;
-}
-
-.buttons{
-  display:flex;
-  gap:10px;
-}
-
-.buttons button{
-  flex:1;
-  padding:12px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.buy{
-  background:#38bdf8;
-  color:black;
-}
-
-.detail{
-  background:#1e293b;
-  color:white;
-}
-
-/* INVENTORY */
-
-.inventory{
-  margin-top:60px;
-  background:#111827;
-  padding:30px;
-  border-radius:20px;
-}
-
-.inventory h2{
-  color:#38bdf8;
-  margin-bottom:20px;
-}
-
-/* CART */
-
-.cart-container{
-  margin-top:60px;
-  background:#111827;
-  padding:30px;
-  border-radius:20px;
-}
-
-.cart-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px;
-  margin-bottom:15px;
-  background:#1e293b;
-  border-radius:12px;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.quantity{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-
-.quantity button{
-  width:30px;
-  height:30px;
-  border:none;
-  border-radius:8px;
-  background:#38bdf8;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.remove{
-  background:red;
-  color:white;
-  border:none;
-  padding:10px 15px;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.total{
-  text-align:right;
-  margin-top:20px;
-  font-size:28px;
-  color:#22c55e;
-}
-
-/* CHECKOUT */
-
-.checkout{
-  margin-top:50px;
-  background:#111827;
-  padding:30px;
-  border-radius:20px;
-}
-
-.checkout h2{
-  color:#38bdf8;
-  margin-bottom:20px;
-}
-
-.checkout input,
-.checkout select{
-  width:100%;
-  padding:15px;
-  margin-bottom:15px;
-  border:none;
-  border-radius:10px;
-  background:#1e293b;
-  color:white;
-}
-
-.checkout button{
-  width:100%;
-  padding:15px;
-  border:none;
-  border-radius:12px;
-  background:#22c55e;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* LOGIN */
-
-.modal{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.7);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:3000;
-}
-
-.modal-box{
-  background:#111827;
-  width:400px;
-  padding:35px;
-  border-radius:20px;
-}
-
-.modal-box h2{
-  color:#38bdf8;
-  margin-bottom:20px;
-  text-align:center;
-}
-
-.modal-box input{
-  width:100%;
-  padding:15px;
-  margin-bottom:15px;
-  border:none;
-  border-radius:10px;
-  background:#1e293b;
-  color:white;
-}
-
-.modal-box button{
-  width:100%;
-  padding:15px;
-  border:none;
-  border-radius:12px;
-  background:#38bdf8;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* TOAST */
-
-.toast{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  background:#22c55e;
-  color:black;
-  padding:15px 25px;
-  border-radius:12px;
-  font-weight:bold;
-  display:none;
-  z-index:5000;
-}
-
-/* FOOTER */
-
-footer{
-  text-align:center;
-  padding:40px;
-  color:#94a3b8;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-  nav{
-    display:none;
-  }
-
-  .hero h1{
-    font-size:45px;
-  }
-
-  .modal-box{
-    width:90%;
-  }
-
-}
-
-</style>
-</head>
-<body>
-
-<!-- LOGIN -->
-
-<div class="modal" id="loginModal">
-
-  <div class="modal-box">
-
-    <h2>Login CS2 Account</h2>
-
-    <input type="text" id="username" placeholder="Username">
-
-    <input type="email" id="email" placeholder="Email">
-
-    <input type="text" id="tradeLink" placeholder="Steam Trade Link">
-
-    <input type="password" placeholder="Password">
-
-    <button onclick="login()">Login</button>
-
-  </div>
-
-</div>
-
-<!-- HEADER -->
-
-<header>
-
-  <div class="logo">CS2Market</div>
-
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Marketplace</a>
-    <a href="#">Inventory</a>
-    <a href="#">Checkout</a>
-  </nav>
-
-  <div class="user-balance" id="balance">
-    Balance: $5000
-  </div>
-
-</header>
-
-<!-- HERO -->
-
-<section class="hero">
-
-  <div>
-
-    <h1>BUY & SELL CS2 SKINS</h1>
-
-    <p>
-      Marketplace modern dengan sistem cart seperti Shopee,
-      inventory, checkout otomatis, dan akun pelanggan.
-    </p>
-
-    <button onclick="scrollMarket()">
-      Explore Market
-    </button>
-
-  </div>
-
-</section>
-
-<!-- MARKET -->
-
-<section id="market">
-
-  <h2 class="title">Marketplace</h2>
-
-  <p class="subtitle">
-    Cari skin terbaik favorit kamu.
-  </p>
-
-  <div class="topbar">
-
-    <div class="search">
-      <input type="text" id="searchInput" placeholder="Search skins...">
-    </div>
-
-    <div class="filter">
-      <select id="rarityFilter">
-        <option value="all">All Rarity</option>
-        <option value="Covert">Covert</option>
-        <option value="Classified">Classified</option>
-        <option value="Legendary">Legendary</option>
-      </select>
-    </div>
-
-    <div class="cart-panel">
-      Cart: <span id="cartCount">0</span>
-    </div>
-
-  </div>
-
-  <!-- GRID -->
-
-  <div class="grid" id="grid">
-
-  </div>
-
-  <!-- INVENTORY -->
-
-  <div class="inventory">
-
-    <h2>User Inventory</h2>
-
-    <div id="inventoryList"></div>
-
-  </div>
-
-  <!-- CART -->
-
-  <div class="cart-container">
-
-    <h2 class="title">Shopping Cart</h2>
-
-    <div id="cartItems"></div>
-
-    <div class="total">
-      Total: $<span id="totalPrice">0</span>
-    </div>
-
-  </div>
-
-  <!-- CHECKOUT -->
-
-  <div class="checkout">
-
-    <h2>Checkout</h2>
-
-    <input type="text" id="checkoutUser" placeholder="CS2 Username">
-
-    <input type="text" id="checkoutTrade" placeholder="Steam Trade Link">
-
-    <select>
-      <option>QRIS</option>
-      <option>DANA</option>
-      <option>OVO</option>
-      <option>GoPay</option>
-      <option>Bank Transfer</option>
-    </select>
-
-    <button onclick="checkout()">
-      Complete Purchase
-    </button>
-
-  </div>
-
-</section>
-
-<!-- TOAST -->
-
-<div class="toast" id="toast"></div>
-
-<footer>
-
-  © 2026 CS2Market Premium
-
-</footer>
-
-<script>
+/* GANTI SEMUA SCRIPT LAMA MENJADI INI */
 
 const skins = [
-
-{
-  const skins = [
 
 {
   name:"AK-47 Redline",
@@ -628,15 +39,16 @@ const skins = [
 
 ];
 
-let cart = [];
+let cart = 0;
 
 function renderSkins(){
 
-  const grid = document.getElementById("grid");
+  const grid =
+  document.getElementById("grid");
 
   grid.innerHTML = "";
 
-  skins.forEach((skin,index)=>{
+  skins.forEach((skin)=>{
 
     grid.innerHTML += `
 
@@ -648,18 +60,28 @@ function renderSkins(){
 
         <h3>${skin.name}</h3>
 
-        <div class="rarity">${skin.rarity}</div>
+        <div class="rarity">
+          ${skin.rarity}
+        </div>
 
-        <div class="price">$${skin.price}</div>
+        <div class="price">
+          $${skin.price}
+        </div>
 
         <div class="buttons">
 
-          <button class="buy" onclick="addCart(${index})">
-            Add Cart
+          <button class="buy"
+          onclick="buyNow('${skin.name}',${skin.price})">
+
+            Buy
+
           </button>
 
-          <button class="detail" onclick="detailSkin('${skin.name}','${skin.rarity}',${skin.price})">
-            Detail
+          <button class="cart"
+          onclick="addCart()">
+
+            Cart
+
           </button>
 
         </div>
@@ -676,274 +98,101 @@ function renderSkins(){
 
 renderSkins();
 
-function addCart(index){
+function addCart(){
 
-  const skin = skins[index];
-
-  const existing = cart.find(item=>item.name===skin.name);
-
-  if(existing){
-
-    existing.qty++;
-
-  }else{
-
-    cart.push({
-      ...skin,
-      qty:1
-    });
-
-  }
-
-  updateCart();
-
-  toast("Skin berhasil ditambahkan");
-
-}
-
-function updateCart(){
-
-  const cartItems =
-  document.getElementById("cartItems");
-
-  cartItems.innerHTML = "";
-
-  let total = 0;
-
-  cart.forEach((item,index)=>{
-
-    total += item.price * item.qty;
-
-    cartItems.innerHTML += `
-
-    <div class="cart-item">
-
-      <div>
-
-        <h3>${item.name}</h3>
-        <p>${item.rarity}</p>
-
-      </div>
-
-      <div class="quantity">
-
-        <button onclick="minusQty(${index})">-</button>
-
-        <span>${item.qty}</span>
-
-        <button onclick="plusQty(${index})">+</button>
-
-      </div>
-
-      <div>$${item.price * item.qty}</div>
-
-      <button class="remove"
-      onclick="removeItem(${index})">
-        Remove
-      </button>
-
-    </div>
-
-    `;
-
-  });
+  cart++;
 
   document.getElementById("cartCount")
-  .innerText = cart.length;
+  .innerText = cart;
 
-  document.getElementById("totalPrice")
-  .innerText = total;
-
-}
-
-function plusQty(index){
-
-  cart[index].qty++;
-
-  updateCart();
+  alert("Skin berhasil dimasukkan ke keranjang");
 
 }
 
-function minusQty(index){
+function buyNow(name,price){
 
-  if(cart[index].qty > 1){
-
-    cart[index].qty--;
-
-  }
-
-  updateCart();
-
-}
-
-function removeItem(index){
-
-  cart.splice(index,1);
-
-  updateCart();
-
-  toast("Item dihapus");
-
-}
-
-function detailSkin(name,rarity,price){
+  addCart();
 
   alert(
-    "Skin: " + name +
-    "\nRarity: " + rarity +
-    "\nPrice: $" + price
+    name +
+    " berhasil dipilih seharga $" +
+    price
   );
 
 }
 
 function checkout(){
 
-  if(cart.length === 0){
+  const history =
+  document.getElementById("historyList");
 
-    toast("Keranjang kosong");
+  const item =
+  document.createElement("div");
 
-    return;
+  item.classList.add("history-item");
 
-  }
+  item.innerText =
+  "Purchase completed successfully.";
 
-  const inventory =
-  document.getElementById("inventoryList");
+  history.appendChild(item);
 
-  cart.forEach(item=>{
-
-    inventory.innerHTML += `
-
-    <div class="cart-item">
-
-      <div>
-        <h3>${item.name}</h3>
-        <p>${item.rarity}</p>
-      </div>
-
-      <div>
-        Qty: ${item.qty}
-      </div>
-
-    </div>
-
-    `;
-
-  });
-
-  cart = [];
-
-  updateCart();
-
-  toast("Checkout berhasil");
+  alert("Checkout berhasil");
 
 }
 
-function toast(text){
+function openLogin(){
 
-  const toast =
-  document.getElementById("toast");
-
-  toast.style.display = "block";
-
-  toast.innerText = text;
-
-  setTimeout(()=>{
-
-    toast.style.display = "none";
-
-  },3000);
+  document.getElementById("loginModal")
+  .style.display = "flex";
 
 }
-
-/* LOGIN */
 
 function login(){
 
-  const username =
-  document.getElementById("username").value;
-
-  const email =
-  document.getElementById("email").value;
-
-  const trade =
-  document.getElementById("tradeLink").value;
-
-  localStorage.setItem("username",username);
-  localStorage.setItem("email",email);
-  localStorage.setItem("trade",trade);
+  alert("Login berhasil");
 
   document.getElementById("loginModal")
   .style.display = "none";
 
-  toast("Login berhasil");
-
 }
 
-window.onload = ()=>{
+window.onclick = function(e){
 
-  const user =
-  localStorage.getItem("username");
+  let modal =
+  document.getElementById("loginModal");
 
-  if(user){
+  if(e.target == modal){
 
-    document.getElementById("loginModal")
-    .style.display = "none";
+    modal.style.display = "none";
+
   }
 
-};
+}
 
 /* SEARCH */
 
 document.getElementById("searchInput")
-.addEventListener("keyup",function(){
+.addEventListener("keyup", function(){
 
-  const value =
+  let filter =
   this.value.toLowerCase();
 
-  const cards =
+  let cards =
   document.querySelectorAll(".card");
 
-  cards.forEach(card=>{
+  cards.forEach(card => {
 
-    const title =
+    let title =
     card.querySelector("h3")
     .innerText.toLowerCase();
 
-    card.style.display =
-    title.includes(value)
-    ? "block"
-    : "none";
-
-  });
-
-});
-
-/* FILTER */
-
-document.getElementById("rarityFilter")
-.addEventListener("change",function(){
-
-  const value = this.value;
-
-  const cards =
-  document.querySelectorAll(".card");
-
-  cards.forEach(card=>{
-
-    const rarity =
-    card.querySelector(".rarity")
-    .innerText;
-
-    if(value === "all"){
+    if(title.includes(filter)){
 
       card.style.display = "block";
 
     }else{
 
-      card.style.display =
-      rarity === value
-      ? "block"
-      : "none";
+      card.style.display = "none";
 
     }
 
@@ -951,7 +200,7 @@ document.getElementById("rarityFilter")
 
 });
 
-function scrollMarket(){
+function scrollToMarket(){
 
   document.getElementById("market")
   .scrollIntoView({
@@ -959,8 +208,3 @@ function scrollMarket(){
   });
 
 }
-
-</script>
-
-</body>
-</html>
