@@ -1,354 +1,379 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS2 Marketplace</title>
 
-  <title>CS2 Market - Buying and Selling Skins CS2</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
 
-  <style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins',sans-serif;
-      scroll-behavior:smooth;
-    }
+body{
+  background:#0f172a;
+  color:white;
+  overflow-x:hidden;
+}
 
-    body{
-      background:#0b1120;
-      color:white;
-      overflow-x:hidden;
-    }
+/* HEADER */
 
-    header{
-      width:100%;
-      position:fixed;
-      top:0;
-      left:0;
-      z-index:1000;
-      background:rgba(10,15,30,0.95);
-      backdrop-filter:blur(10px);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:18px 7%;
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 5%;
+  background:#111827;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
 
-    .logo{
-      font-size:28px;
-      font-weight:700;
-      color:#4fd1ff;
-    }
+.logo{
+  font-size:28px;
+  font-weight:700;
+  color:#38bdf8;
+}
 
-    nav a{
-      text-decoration:none;
-      color:white;
-      margin-left:25px;
-      transition:0.3s;
-      font-weight:500;
-    }
+.search-box{
+  width:40%;
+}
 
-    nav a:hover{
-      color:#4fd1ff;
-    }
+.search-box input{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#1e293b;
+  color:white;
+}
 
-    .hero{
-      height:100vh;
-      background:
-      linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),
-      url('https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1600') center/cover;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:20px;
-    }
+.balance{
+  background:#1e293b;
+  padding:12px 20px;
+  border-radius:10px;
+}
 
-    .hero-content h1{
-      font-size:75px;
-      margin-bottom:20px;
-      color:#4fd1ff;
-    }
+/* HERO */
 
-    .hero-content p{
-      max-width:700px;
-      margin:auto;
-      color:#d1d5db;
-      margin-bottom:35px;
-      font-size:18px;
-    }
+.hero{
+  padding:80px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
 
-    .btn{
-      display:inline-block;
-      padding:15px 35px;
-      border-radius:50px;
-      text-decoration:none;
-      background:#4fd1ff;
-      color:#000;
-      font-weight:700;
-      transition:0.3s;
-    }
+.hero-text{
+  max-width:600px;
+}
 
-    .btn:hover{
-      background:white;
-      transform:translateY(-3px);
-    }
+.hero-text h1{
+  font-size:60px;
+  color:#38bdf8;
+  margin-bottom:20px;
+}
 
-    section{
-      padding:100px 7%;
-    }
+.hero-text p{
+  color:#cbd5e1;
+  margin-bottom:30px;
+}
 
-    .section-title{
-      font-size:45px;
-      margin-bottom:20px;
-      color:#4fd1ff;
-      text-align:center;
-    }
+.hero-text button{
+  padding:15px 30px;
+  border:none;
+  border-radius:12px;
+  background:#38bdf8;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .section-subtitle{
-      text-align:center;
-      color:#cbd5e1;
-      margin-bottom:50px;
-    }
+/* LAYOUT */
 
-    .skins{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:25px;
-    }
+.container{
+  display:flex;
+  padding:40px 5%;
+  gap:30px;
+}
 
-    .card{
-      background:#111827;
-      border-radius:20px;
-      overflow:hidden;
-      transition:0.3s;
-      border:1px solid rgba(255,255,255,0.05);
-    }
+/* SIDEBAR */
 
-    .card:hover{
-      transform:translateY(-10px);
-      box-shadow:0 10px 25px rgba(0,0,0,0.5);
-    }
+.sidebar{
+  width:250px;
+  background:#111827;
+  padding:25px;
+  border-radius:20px;
+  height:fit-content;
+}
 
-    .card img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-    }
+.sidebar h3{
+  margin-bottom:20px;
+  color:#38bdf8;
+}
 
-    .card-content{
-      padding:20px;
-    }
+.sidebar button{
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border:none;
+  border-radius:10px;
+  background:#1e293b;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
 
-    .card-content h3{
-      margin-bottom:10px;
-      color:#4fd1ff;
-    }
+.sidebar button:hover{
+  background:#38bdf8;
+  color:black;
+}
 
-    .price{
-      color:#22c55e;
-      font-size:22px;
-      font-weight:bold;
-      margin:15px 0;
-    }
+/* MARKET */
 
-    .buy-btn{
-      width:100%;
-      padding:12px;
-      border:none;
-      border-radius:10px;
-      background:#4fd1ff;
-      color:black;
-      font-weight:bold;
-      cursor:pointer;
-      transition:0.3s;
-    }
+.market{
+  flex:1;
+}
 
-    .buy-btn:hover{
-      background:white;
-    }
+.market-header{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:30px;
+}
 
-    .features{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
-    }
+.market-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
 
-    .feature-box{
-      background:#111827;
-      padding:35px;
-      border-radius:20px;
-      text-align:center;
-    }
+.card{
+  background:#111827;
+  border-radius:20px;
+  overflow:hidden;
+  transition:0.3s;
+  position:relative;
+}
 
-    .feature-box h3{
-      color:#4fd1ff;
-      margin-bottom:15px;
-    }
+.card:hover{
+  transform:translateY(-10px);
+}
 
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:20px;
-      text-align:center;
-    }
+.card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
 
-    .stat-box{
-      background:#111827;
-      padding:35px;
-      border-radius:20px;
-    }
+.card-content{
+  padding:20px;
+}
 
-    .stat-box h2{
-      color:#4fd1ff;
-      font-size:45px;
-    }
+.card h3{
+  color:#38bdf8;
+  margin-bottom:10px;
+}
 
-    .testimonials{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:25px;
-    }
+.rarity{
+  color:#facc15;
+  font-size:14px;
+}
 
-    .testimonial{
-      background:#111827;
-      padding:30px;
-      border-radius:20px;
-    }
+.price{
+  margin:15px 0;
+  font-size:25px;
+  color:#22c55e;
+  font-weight:bold;
+}
 
-    .testimonial h4{
-      color:#4fd1ff;
-      margin-top:15px;
-    }
+.buy-btn{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#38bdf8;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .newsletter{
-      background:#111827;
-      border-radius:25px;
-      text-align:center;
-      padding:60px 20px;
-    }
+.buy-btn:hover{
+  background:white;
+}
 
-    .newsletter input{
-      width:100%;
-      max-width:500px;
-      padding:15px;
-      border:none;
-      border-radius:10px;
-      margin-top:20px;
-      outline:none;
-    }
+/* CART */
 
-    .newsletter button{
-      padding:15px 30px;
-      margin-top:20px;
-      border:none;
-      border-radius:10px;
-      background:#4fd1ff;
-      font-weight:bold;
-      cursor:pointer;
-    }
+.cart{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#38bdf8;
+  color:black;
+  padding:15px 25px;
+  border-radius:15px;
+  font-weight:bold;
+  box-shadow:0 5px 20px rgba(0,0,0,0.5);
+}
 
-    footer{
-      background:#050816;
-      text-align:center;
-      padding:30px;
-      color:#94a3b8;
-      margin-top:60px;
-    }
+/* MODAL */
 
-    @media(max-width:768px){
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
 
-      header{
-        flex-direction:column;
-        padding:20px;
-      }
+.modal-content{
+  background:#111827;
+  padding:40px;
+  border-radius:20px;
+  width:400px;
+  text-align:center;
+}
 
-      nav{
-        margin-top:15px;
-      }
+.modal-content h2{
+  margin-bottom:20px;
+  color:#38bdf8;
+}
 
-      .hero-content h1{
-        font-size:50px;
-      }
+.modal-content button{
+  margin-top:20px;
+  padding:12px 25px;
+  border:none;
+  border-radius:10px;
+  background:#38bdf8;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-      .hero-content p{
-        font-size:16px;
-      }
+/* FOOTER */
 
-      .section-title{
-        font-size:35px;
-      }
+footer{
+  text-align:center;
+  padding:40px;
+  color:#94a3b8;
+}
 
-    }
+/* MOBILE */
 
-  </style>
+@media(max-width:900px){
+
+  .container{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+  }
+
+  .hero{
+    text-align:center;
+  }
+
+  .hero-text h1{
+    font-size:40px;
+  }
+
+  .search-box{
+    display:none;
+  }
+
+}
+
+</style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
+<header>
 
-    <div class="logo">CS2Market</div>
+  <div class="logo">CS2Market</div>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#skins">Skins</a>
-      <a href="#features">Features</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search skins...">
+  </div>
 
-  </header>
+  <div class="balance">
+    Balance: $5000
+  </div>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
+</header>
 
-    <div class="hero-content">
+<section class="hero">
 
-      <h1>BUY & SELL CS2 SKINS</h1>
+  <div class="hero-text">
 
-      <p>
-        Platform modern untuk jual beli skin Counter-Strike 2
-        dengan tampilan premium, transaksi cepat, aman,
-        dan koleksi skin terlengkap.
-      </p>
+    <h1>Buy & Sell CS2 Skins</h1>
 
-      <a href="#skins" class="btn">Explore Skins</a>
+    <p>
+      Marketplace modern dengan sistem otomatis,
+      inventory, filter rarity, dan transaksi cepat.
+    </p>
+
+    <button>Explore Market</button>
+
+  </div>
+
+</section>
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+
+  <div class="sidebar">
+
+    <h3>Categories</h3>
+
+    <button>Knives</button>
+    <button>Rifles</button>
+    <button>Pistols</button>
+    <button>Gloves</button>
+    <button>Rare Items</button>
+
+  </div>
+
+  <!-- MARKET -->
+
+  <div class="market">
+
+    <div class="market-header">
+
+      <h2>Popular Skins</h2>
+
+      <p id="itemCount">4 Items</p>
 
     </div>
 
-  </section>
+    <div class="market-grid" id="marketGrid">
 
-  <!-- SKINS -->
-  <section id="skins">
-
-    <h2 class="section-title">Popular Skins</h2>
-
-    <p class="section-subtitle">
-      Koleksi skin terbaik dan terpopuler di marketplace kami.
-    </p>
-
-    <div class="skins">
+      <!-- CARD -->
 
       <div class="card">
 
-        <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=1200">
+        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200">
 
         <div class="card-content">
 
           <h3>AK-47 Redline</h3>
 
-          <p>Factory New • StatTrak™</p>
+          <div class="rarity">Classified</div>
 
-          <div class="price">$149.99</div>
+          <div class="price">$149</div>
 
-          <button class="buy-btn">Buy Now</button>
+          <button class="buy-btn" onclick="buySkin('AK-47 Redline',149)">
+            Buy Now
+          </button>
 
         </div>
 
@@ -362,29 +387,13 @@
 
           <h3>AWP Dragon Lore</h3>
 
-          <p>Minimal Wear</p>
+          <div class="rarity">Covert</div>
 
-          <div class="price">$1999.99</div>
+          <div class="price">$1999</div>
 
-          <button class="buy-btn">Buy Now</button>
-
-        </div>
-
-      </div>
-
-      <div class="card">
-
-        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200">
-
-        <div class="card-content">
-
-          <h3>M4A4 Howl</h3>
-
-          <p>Factory New</p>
-
-          <div class="price">$2599.99</div>
-
-          <button class="buy-btn">Buy Now</button>
+          <button class="buy-btn" onclick="buySkin('AWP Dragon Lore',1999)">
+            Buy Now
+          </button>
 
         </div>
 
@@ -398,11 +407,33 @@
 
           <h3>Butterfly Knife</h3>
 
-          <p>Fade • FN</p>
+          <div class="rarity">Legendary</div>
 
-          <div class="price">$3200.00</div>
+          <div class="price">$3200</div>
 
-          <button class="buy-btn">Buy Now</button>
+          <button class="buy-btn" onclick="buySkin('Butterfly Knife',3200)">
+            Buy Now
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=1200">
+
+        <div class="card-content">
+
+          <h3>M4A4 Howl</h3>
+
+          <div class="rarity">Rare</div>
+
+          <div class="price">$2599</div>
+
+          <button class="buy-btn" onclick="buySkin('M4A4 Howl',2599)">
+            Buy Now
+          </button>
 
         </div>
 
@@ -410,167 +441,97 @@
 
     </div>
 
-  </section>
+  </div>
 
-  <!-- FEATURES -->
-  <section id="features">
+</div>
 
-    <h2 class="section-title">Why Choose Us?</h2>
+<!-- CART -->
 
-    <p class="section-subtitle">
-      Marketplace skin CS2 terpercaya dengan fitur modern.
-    </p>
+<div class="cart">
+  Cart: <span id="cartCount">0</span>
+</div>
 
-    <div class="features">
+<!-- MODAL -->
 
-      <div class="feature-box">
+<div class="modal" id="modal">
 
-        <h3>Fast Delivery</h3>
+  <div class="modal-content">
 
-        <p>
-          Pengiriman skin otomatis dan cepat langsung ke akun Steam.
-        </p>
+    <h2>Purchase Success</h2>
 
-      </div>
+    <p id="modalText"></p>
 
-      <div class="feature-box">
+    <button onclick="closeModal()">Close</button>
 
-        <h3>Secure Trading</h3>
+  </div>
 
-        <p>
-          Sistem keamanan modern untuk melindungi transaksi pengguna.
-        </p>
+</div>
 
-      </div>
+<footer>
 
-      <div class="feature-box">
+  © 2026 CS2Market - Modern Marketplace
 
-        <h3>Cheap Prices</h3>
+</footer>
 
-        <p>
-          Harga kompetitif dan lebih murah dibanding marketplace lain.
-        </p>
+<script>
 
-      </div>
+let cart = 0;
 
-      <div class="feature-box">
+function buySkin(name, price){
 
-        <h3>24/7 Support</h3>
+  cart++;
 
-        <p>
-          Customer support aktif membantu kapan saja.
-        </p>
+  document.getElementById("cartCount").innerText = cart;
 
-      </div>
+  document.getElementById("modal").style.display = "flex";
 
-    </div>
+  document.getElementById("modalText").innerText =
+  `${name} berhasil dibeli seharga $${price}`;
 
-  </section>
+}
 
-  <!-- STATS -->
-  <section>
+function closeModal(){
 
-    <h2 class="section-title">Marketplace Stats</h2>
+  document.getElementById("modal").style.display = "none";
 
-    <div class="stats">
+}
 
-      <div class="stat-box">
-        <h2>50K+</h2>
-        <p>Users</p>
-      </div>
+/* SEARCH SYSTEM */
 
-      <div class="stat-box">
-        <h2>120K+</h2>
-        <p>Transactions</p>
-      </div>
+const searchInput = document.getElementById("searchInput");
 
-      <div class="stat-box">
-        <h2>15K+</h2>
-        <p>Available Skins</p>
-      </div>
+searchInput.addEventListener("keyup", function(){
 
-      <div class="stat-box">
-        <h2>99%</h2>
-        <p>Positive Reviews</p>
-      </div>
+  let filter = searchInput.value.toLowerCase();
 
-    </div>
+  let cards = document.querySelectorAll(".card");
 
-  </section>
+  let visible = 0;
 
-  <!-- REVIEWS -->
-  <section id="reviews">
+  cards.forEach(card => {
 
-    <h2 class="section-title">User Reviews</h2>
+    let title = card.querySelector("h3").innerText.toLowerCase();
 
-    <div class="testimonials">
+    if(title.includes(filter)){
 
-      <div class="testimonial">
+      card.style.display = "block";
 
-        <p>
-          "Website sangat cepat dan mudah digunakan,
-          skin langsung masuk ke akun Steam saya."
-        </p>
+      visible++;
 
-        <h4>Rizky</h4>
+    }else{
 
-      </div>
+      card.style.display = "none";
 
-      <div class="testimonial">
+    }
 
-        <p>
-          "Harga lebih murah dibanding marketplace lain,
-          tampilannya juga keren banget."
-        </p>
+  });
 
-        <h4>Andra</h4>
+  document.getElementById("itemCount").innerText =
+  visible + " Items";
 
-      </div>
+});
 
-      <div class="testimonial">
-
-        <p>
-          "Proses jual skin cepat dan aman,
-          recommended untuk trader CS2."
-        </p>
-
-        <h4>Fikri</h4>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- NEWSLETTER -->
-  <section id="contact">
-
-    <div class="newsletter">
-
-      <h2 class="section-title">Join Our Newsletter</h2>
-
-      <p>
-        Dapatkan update skin terbaru dan promo eksklusif.
-      </p>
-
-      <input type="email" placeholder="Masukkan Email">
-
-      <br>
-
-      <button>Subscribe</button>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-
-    <p>
-      © 2026 CS2Market. All Rights Reserved.
-    </p>
-
-  </footer>
+</script>
 
 </body>
 </html>
