@@ -1,144 +1,104 @@
-/* GANTI SEMUA SCRIPT LAMA MENJADI INI */
+<!-- ================= LOGIN MODAL REVISI ================= -->
 
-const skins = [
+<div class="modal" id="loginModal">
 
-{
-  name:"AK-47 Redline",
-  rarity:"Classified",
-  price:149,
-  image:"https://cdn.cloudflare.steamstatic.com/apps/730/icons/econ/default_generated/weapon_ak47_cu_ak47_redline_light_large.bf0de16f7f1e88d9a5e6d7e6d0f4c7c7.png"
-},
+  <div class="modal-box">
 
-{
-  name:"AWP Dragon Lore",
-  rarity:"Covert",
-  price:1999,
-  image:"https://cdn.cloudflare.steamstatic.com/apps/730/icons/econ/default_generated/weapon_awp_hy_dragon_lore_light_large.c1d3.png"
-},
+    <h2>Login CS2 Account</h2>
 
-{
-  name:"Butterfly Knife Fade",
-  rarity:"Legendary",
-  price:3200,
-  image:"https://cdn.cloudflare.steamstatic.com/apps/730/icons/econ/default_generated/weapon_knife_butterfly_am_fade_light_large.png"
-},
+    <input type="text" id="username" placeholder="Username">
 
-{
-  name:"M4A4 Howl",
-  rarity:"Contraband",
-  price:2599,
-  image:"https://cdn.cloudflare.steamstatic.com/apps/730/icons/econ/default_generated/weapon_m4a4_cu_howl_light_large.png"
-},
+    <input type="email" id="email" placeholder="Email">
 
-{
-  name:"Karambit Doppler",
-  rarity:"Legendary",
-  price:4100,
-  image:"https://cdn.cloudflare.steamstatic.com/apps/730/icons/econ/default_generated/weapon_knife_karambit_phase2_light_large.png"
+    <input type="text" id="tradeLink" placeholder="Steam Trade Link">
+
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">
+      Login
+    </button>
+
+  </div>
+
+</div>
+
+<!-- ================= CSS ================= -->
+
+<style>
+
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:3000;
 }
 
-];
+.modal-box{
+  background:#111827;
+  width:400px;
+  padding:35px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.08);
+}
 
-let cart = 0;
+.modal-box h2{
+  color:#38bdf8;
+  margin-bottom:20px;
+  text-align:center;
+}
 
-function renderSkins(){
+.modal-box input{
+  width:100%;
+  padding:14px;
+  margin-bottom:15px;
+  border:none;
+  border-radius:10px;
+  background:#1e293b;
+  color:white;
+  outline:none;
+}
 
-  const grid =
-  document.getElementById("grid");
+.modal-box input:focus{
+  border:1px solid #38bdf8;
+}
 
-  grid.innerHTML = "";
+.modal-box button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  background:#38bdf8;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
 
-  skins.forEach((skin)=>{
+.modal-box button:hover{
+  opacity:0.9;
+}
 
-    grid.innerHTML += `
+@media(max-width:768px){
 
-    <div class="card">
-
-      <img src="${skin.image}">
-
-      <div class="content">
-
-        <h3>${skin.name}</h3>
-
-        <div class="rarity">
-          ${skin.rarity}
-        </div>
-
-        <div class="price">
-          $${skin.price}
-        </div>
-
-        <div class="buttons">
-
-          <button class="buy"
-          onclick="buyNow('${skin.name}',${skin.price})">
-
-            Buy
-
-          </button>
-
-          <button class="cart"
-          onclick="addCart()">
-
-            Cart
-
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    `;
-
-  });
+  .modal-box{
+    width:90%;
+  }
 
 }
 
-renderSkins();
+</style>
 
-function addCart(){
+<!-- ================= JAVASCRIPT ================= -->
 
-  cart++;
+<script>
 
-  document.getElementById("cartCount")
-  .innerText = cart;
-
-  alert("Skin berhasil dimasukkan ke keranjang");
-
-}
-
-function buyNow(name,price){
-
-  addCart();
-
-  alert(
-    name +
-    " berhasil dipilih seharga $" +
-    price
-  );
-
-}
-
-function checkout(){
-
-  const history =
-  document.getElementById("historyList");
-
-  const item =
-  document.createElement("div");
-
-  item.classList.add("history-item");
-
-  item.innerText =
-  "Purchase completed successfully.";
-
-  history.appendChild(item);
-
-  alert("Checkout berhasil");
-
-}
+/* OPEN LOGIN */
 
 function openLogin(){
 
@@ -147,18 +107,100 @@ function openLogin(){
 
 }
 
+/* LOGIN */
+
 function login(){
 
-  alert("Login berhasil");
+  const username =
+  document.getElementById("username").value;
+
+  const email =
+  document.getElementById("email").value;
+
+  const tradeLink =
+  document.getElementById("tradeLink").value;
+
+  const password =
+  document.getElementById("password").value;
+
+  if(
+    username.trim() === "" ||
+    email.trim() === "" ||
+    tradeLink.trim() === "" ||
+    password.trim() === ""
+  ){
+
+    alert("Semua data harus diisi");
+    return;
+
+  }
+
+  /* SAVE ACCOUNT */
+
+  localStorage.setItem(
+    "cs2_username",
+    username
+  );
+
+  localStorage.setItem(
+    "cs2_email",
+    email
+  );
+
+  localStorage.setItem(
+    "cs2_tradeLink",
+    tradeLink
+  );
+
+  /* CLOSE MODAL */
 
   document.getElementById("loginModal")
   .style.display = "none";
 
+  /* CHANGE LOGIN BUTTON */
+
+  const loginBtn =
+  document.querySelector(".login-btn");
+
+  if(loginBtn){
+
+    loginBtn.innerText =
+    username;
+
+  }
+
+  alert("Login berhasil");
+
 }
+
+/* AUTO LOGIN */
+
+window.onload = function(){
+
+  const savedUser =
+  localStorage.getItem("cs2_username");
+
+  if(savedUser){
+
+    const loginBtn =
+    document.querySelector(".login-btn");
+
+    if(loginBtn){
+
+      loginBtn.innerText =
+      savedUser;
+
+    }
+
+  }
+
+}
+
+/* CLOSE MODAL WHEN CLICK OUTSIDE */
 
 window.onclick = function(e){
 
-  let modal =
+  const modal =
   document.getElementById("loginModal");
 
   if(e.target == modal){
@@ -169,42 +211,4 @@ window.onclick = function(e){
 
 }
 
-/* SEARCH */
-
-document.getElementById("searchInput")
-.addEventListener("keyup", function(){
-
-  let filter =
-  this.value.toLowerCase();
-
-  let cards =
-  document.querySelectorAll(".card");
-
-  cards.forEach(card => {
-
-    let title =
-    card.querySelector("h3")
-    .innerText.toLowerCase();
-
-    if(title.includes(filter)){
-
-      card.style.display = "block";
-
-    }else{
-
-      card.style.display = "none";
-
-    }
-
-  });
-
-});
-
-function scrollToMarket(){
-
-  document.getElementById("market")
-  .scrollIntoView({
-    behavior:"smooth"
-  });
-
-}
+</script>
