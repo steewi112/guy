@@ -1,30 +1,241 @@
-<!-- ================= LOGIN MODAL REVISI ================= -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="modal" id="loginModal">
+<title>CS2Market Premium</title>
 
-  <div class="modal-box">
-
-    <h2>Login CS2 Account</h2>
-
-    <input type="text" id="username" placeholder="Username">
-
-    <input type="email" id="email" placeholder="Email">
-
-    <input type="text" id="tradeLink" placeholder="Steam Trade Link">
-
-    <input type="password" id="password" placeholder="Password">
-
-    <button onclick="login()">
-      Login
-    </button>
-
-  </div>
-
-</div>
-
-<!-- ================= CSS ================= -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#0b1120;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+  background:#111827;
+  padding:18px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+  font-size:28px;
+  font-weight:700;
+  color:#38bdf8;
+}
+
+nav{
+  display:flex;
+  gap:20px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#38bdf8;
+}
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.balance{
+  background:#1e293b;
+  padding:10px 18px;
+  border-radius:12px;
+  color:#22c55e;
+  font-weight:bold;
+}
+
+.cart-icon{
+  background:#38bdf8;
+  color:black;
+  padding:12px 20px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.login-btn{
+  background:#22c55e;
+  color:black;
+  border:none;
+  padding:12px 20px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+  height:90vh;
+  background:
+  linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)),
+  url('https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1600') center/cover;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:70px;
+  color:#38bdf8;
+  margin-bottom:20px;
+}
+
+.hero p{
+  color:#cbd5e1;
+  max-width:700px;
+  margin:auto;
+  margin-bottom:30px;
+}
+
+.hero button{
+  padding:15px 35px;
+  border:none;
+  border-radius:12px;
+  background:#38bdf8;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* SECTION */
+
+section{
+  padding:80px 5%;
+}
+
+.title{
+  text-align:center;
+  font-size:45px;
+  margin-bottom:15px;
+  color:#38bdf8;
+}
+
+.subtitle{
+  text-align:center;
+  color:#94a3b8;
+  margin-bottom:40px;
+}
+
+/* SEARCH */
+
+.search-box{
+  margin-bottom:40px;
+}
+
+.search-box input{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:12px;
+  background:#111827;
+  color:white;
+}
+
+/* GRID */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:#111827;
+  border-radius:20px;
+  overflow:hidden;
+  transition:0.3s;
+  border:1px solid rgba(255,255,255,0.06);
+}
+
+.card:hover{
+  transform:translateY(-10px);
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:contain;
+  background:#0f172a;
+  padding:20px;
+}
+
+.content{
+  padding:20px;
+}
+
+.content h3{
+  color:#38bdf8;
+  margin-bottom:10px;
+}
+
+.rarity{
+  color:#facc15;
+  margin-bottom:10px;
+}
+
+.price{
+  font-size:30px;
+  color:#22c55e;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+.buttons{
+  display:flex;
+  gap:10px;
+}
+
+.buttons button{
+  flex:1;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.buy{
+  background:#38bdf8;
+  color:black;
+}
+
+.cart{
+  background:#1e293b;
+  color:white;
+}
+
+/* LOGIN MODAL */
 
 .modal{
   position:fixed;
@@ -44,7 +255,6 @@
   width:400px;
   padding:35px;
   border-radius:20px;
-  border:1px solid rgba(255,255,255,0.08);
 }
 
 .modal-box h2{
@@ -55,36 +265,44 @@
 
 .modal-box input{
   width:100%;
-  padding:14px;
+  padding:15px;
   margin-bottom:15px;
   border:none;
   border-radius:10px;
   background:#1e293b;
   color:white;
-  outline:none;
-}
-
-.modal-box input:focus{
-  border:1px solid #38bdf8;
 }
 
 .modal-box button{
   width:100%;
-  padding:14px;
+  padding:15px;
   border:none;
   border-radius:10px;
   background:#38bdf8;
   color:black;
   font-weight:bold;
   cursor:pointer;
-  transition:0.3s;
 }
 
-.modal-box button:hover{
-  opacity:0.9;
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:40px;
+  color:#94a3b8;
 }
+
+/* MOBILE */
 
 @media(max-width:768px){
+
+  nav{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:45px;
+  }
 
   .modal-box{
     width:90%;
@@ -93,12 +311,316 @@
 }
 
 </style>
+</head>
+<body>
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- HEADER -->
+
+<header>
+
+  <div class="logo">CS2Market</div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Marketplace</a>
+    <a href="#">Inventory</a>
+  </nav>
+
+  <div class="header-right">
+
+    <div class="balance">
+      $5000
+    </div>
+
+    <a href="cart.html" class="cart-icon">
+      🛒 <span id="cartCount">0</span>
+    </a>
+
+    <button class="login-btn" onclick="openLogin()">
+      Login
+    </button>
+
+  </div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div>
+
+    <h1>BUY & SELL CS2 SKINS</h1>
+
+    <p>
+      Marketplace modern dengan sistem cart,
+      login account, dan tampilan premium.
+    </p>
+
+    <button onclick="scrollMarket()">
+      Explore Market
+    </button>
+
+  </div>
+
+</section>
+
+<!-- MARKET -->
+
+<section id="market">
+
+  <h2 class="title">Popular Skins</h2>
+
+  <p class="subtitle">
+    Koleksi skin premium Counter-Strike 2
+  </p>
+
+  <div class="search-box">
+
+    <input type="text"
+    id="searchInput"
+    placeholder="Search skins...">
+
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+</section>
+
+<!-- LOGIN -->
+
+<div class="modal" id="loginModal">
+
+  <div class="modal-box">
+
+    <h2>Login Account</h2>
+
+    <input type="text"
+    id="username"
+    placeholder="Username">
+
+    <input type="email"
+    id="email"
+    placeholder="Email">
+
+    <input type="text"
+    id="tradeLink"
+    placeholder="Steam Trade Link">
+
+    <input type="password"
+    id="password"
+    placeholder="Password">
+
+    <button onclick="login()">
+      Login
+    </button>
+
+  </div>
+
+</div>
+
+<footer>
+
+  © 2026 CS2Market Premium
+
+</footer>
 
 <script>
 
-/* OPEN LOGIN */
+/* SKINS */
+
+const skins = [
+
+{
+  name:"AK-47 Redline",
+  rarity:"Classified",
+  price:149,
+  image:"https://cdn.cloudflare.steamstatic.com/apps/730/icons/econ/default_generated/weapon_ak47_cu_ak47_redline_light_large.bf0de16f7f1e88d9a5e6d7e6d0f4c7c7.png"
+},
+
+{
+  name:"AWP Dragon Lore",
+  rarity:"Covert",
+  price:1999,
+  image:"https://cdn.cloudflare.steamstatic.com/apps/730/icons/econ/default_generated/weapon_awp_hy_dragon_lore_light_large.c1d3.png"
+},
+
+{
+  name:"Butterfly Knife Fade",
+  rarity:"Legendary",
+  price:3200,
+  image:"https://cdn.cloudflare.steamstatic.com/apps/730/icons/econ/default_generated/weapon_knife_butterfly_am_fade_light_large.png"
+},
+
+{
+  name:"M4A4 Howl",
+  rarity:"Contraband",
+  price:2599,
+  image:"https://cdn.cloudflare.steamstatic.com/apps/730/icons/econ/default_generated/weapon_m4a4_cu_howl_light_large.png"
+},
+
+{
+  name:"Karambit Doppler",
+  rarity:"Legendary",
+  price:4100,
+  image:"https://cdn.cloudflare.steamstatic.com/apps/730/icons/econ/default_generated/weapon_knife_karambit_phase2_light_large.png"
+}
+
+];
+
+/* CART */
+
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
+
+/* RENDER SKINS */
+
+function renderSkins(){
+
+  const grid =
+  document.getElementById("grid");
+
+  grid.innerHTML = "";
+
+  skins.forEach((skin,index)=>{
+
+    grid.innerHTML += `
+
+    <div class="card">
+
+      <img src="${skin.image}">
+
+      <div class="content">
+
+        <h3>${skin.name}</h3>
+
+        <div class="rarity">
+          ${skin.rarity}
+        </div>
+
+        <div class="price">
+          $${skin.price}
+        </div>
+
+        <div class="buttons">
+
+          <button class="buy"
+          onclick="buyNow(${index})">
+
+            Buy
+
+          </button>
+
+          <button class="cart"
+          onclick="addCart(${index})">
+
+            Cart
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    `;
+
+  });
+
+}
+
+renderSkins();
+
+/* ADD CART */
+
+function addCart(index){
+
+  const skin = skins[index];
+
+  const existing =
+  cart.find(item =>
+    item.name === skin.name
+  );
+
+  if(existing){
+
+    existing.qty++;
+
+  }else{
+
+    cart.push({
+      ...skin,
+      qty:1
+    });
+
+  }
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(cart)
+  );
+
+  updateCart();
+
+  alert("Skin masuk ke keranjang");
+
+}
+
+/* BUY */
+
+function buyNow(index){
+
+  addCart(index);
+
+  window.location.href =
+  "cart.html";
+
+}
+
+/* UPDATE CART */
+
+function updateCart(){
+
+  document.getElementById("cartCount")
+  .innerText = cart.length;
+
+}
+
+updateCart();
+
+/* SEARCH */
+
+document.getElementById("searchInput")
+.addEventListener("keyup", function(){
+
+  let filter =
+  this.value.toLowerCase();
+
+  let cards =
+  document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+
+    let title =
+    card.querySelector("h3")
+    .innerText.toLowerCase();
+
+    if(title.includes(filter)){
+
+      card.style.display = "block";
+
+    }else{
+
+      card.style.display = "none";
+
+    }
+
+  });
+
+});
+
+/* LOGIN */
 
 function openLogin(){
 
@@ -106,8 +628,6 @@ function openLogin(){
   .style.display = "flex";
 
 }
-
-/* LOGIN */
 
 function login(){
 
@@ -124,18 +644,16 @@ function login(){
   document.getElementById("password").value;
 
   if(
-    username.trim() === "" ||
-    email.trim() === "" ||
-    tradeLink.trim() === "" ||
-    password.trim() === ""
+    username === "" ||
+    email === "" ||
+    tradeLink === "" ||
+    password === ""
   ){
 
-    alert("Semua data harus diisi");
+    alert("Semua data wajib diisi");
     return;
 
   }
-
-  /* SAVE ACCOUNT */
 
   localStorage.setItem(
     "cs2_username",
@@ -152,22 +670,11 @@ function login(){
     tradeLink
   );
 
-  /* CLOSE MODAL */
+  document.querySelector(".login-btn")
+  .innerText = username;
 
   document.getElementById("loginModal")
   .style.display = "none";
-
-  /* CHANGE LOGIN BUTTON */
-
-  const loginBtn =
-  document.querySelector(".login-btn");
-
-  if(loginBtn){
-
-    loginBtn.innerText =
-    username;
-
-  }
 
   alert("Login berhasil");
 
@@ -182,21 +689,14 @@ window.onload = function(){
 
   if(savedUser){
 
-    const loginBtn =
-    document.querySelector(".login-btn");
-
-    if(loginBtn){
-
-      loginBtn.innerText =
-      savedUser;
-
-    }
+    document.querySelector(".login-btn")
+    .innerText = savedUser;
 
   }
 
 }
 
-/* CLOSE MODAL WHEN CLICK OUTSIDE */
+/* CLOSE MODAL */
 
 window.onclick = function(e){
 
@@ -211,4 +711,18 @@ window.onclick = function(e){
 
 }
 
+/* SCROLL */
+
+function scrollMarket(){
+
+  document.getElementById("market")
+  .scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
 </script>
+
+</body>
+</html>
